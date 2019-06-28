@@ -1,0 +1,87 @@
+<div class="container app">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h2>
+                    {{titulo}} 
+                </h2>
+            </div>
+            <div class="text-center">
+                <img alt="Home" height="90" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" title="Home" width="100" class="ng-star-inserted">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-12">
+                    <h4>Crear Datos</h4>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="nombre" class="control-label col-md-12">
+                              Nombre
+                            </label>
+                            <div class="col-md-12">
+                                <input type="text" name="nombre" id="nombre" class="form-control"
+                                [(ngModel)]="model.nombre" placeholder="Digite el Nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="posicion" class="control-label col-md-2">
+                                  Posicion
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="text" name="posicion" id="posicion" class="form-control"
+                                    [(ngModel)]="model.posicion" placeholder="Digite el Posicion">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="email" class="control-label col-md-12">
+                                  Email
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="text" name="meial" id="email" class="form-control"
+                                    [(ngModel)]="model.email" placeholder="Digite el Email">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-offset-12">
+                                <button type="submit" class="btn btn-success" (click)="nuevoEmpleado()">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Lista Empelado</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Posicion</th>
+                    <th>Email</th>
+                    <th>Accion</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleados; let i = index">
+                        <td>{{empleado.nombre}}</td>
+                        <td>{{empleado.posicion}}</td>
+                        <td>{{empleado.email}}</td>
+                        <td>
+                            <a class="btn btn-success" (click)="editarEmpleado(i)"> Editat</a>
+                            <a class="btn btn-danger" (click)="eliminarEmpleado(i)"> Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12">
+            <div class="alert alert-success alert-dismissable">
+              <a href="" class="close">&times;</a>
+               Mensaje!!
+            </div>
+        </div>
+    </div>
+    
+
+</div>

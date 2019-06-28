@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TareasComponent } from './components/tareas/tareas.component';
+
 
 const routes: Routes = [
-  {path: 'tarea', component: TareasComponent}
+  /*{path: 'Listtarea', component: ListtareaComponent}*/
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
