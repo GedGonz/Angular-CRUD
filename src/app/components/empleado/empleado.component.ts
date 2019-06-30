@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { empleado } from '../../model/empleado';
 @Component({
   selector: 'app-empleado',
   templateUrl: './empleado.component.html',
@@ -9,46 +9,63 @@ export class EmpleadoComponent implements OnInit {
 
   constructor() { }
 
+  titulo = 'Angular';
+
+  empleados: empleado[] = [
+    {
+      id: 1,
+      nombre: 'Ged',
+      posicion: 'Desarrollo',
+      email: 'gedgonz7@gamail.com'
+    },
+    {
+      id: 2,
+      nombre: 'Gedgonz',
+      posicion: 'Desarrollo',
+      email: 'gedgonz7@gamail.com'
+    },
+    {
+      id: 3,
+      nombre: 'GedXel',
+      posicion: 'Desarrollo',
+      email: 'gedgonz7@gamail.com'
+    }];
+
+    model: empleado = new empleado();
+    isupdate = false;
+    elementoarray: number;
   ngOnInit() {
   }
 
-  titulo="Angular";
-  
-  empleados=[
-    {
-      nombre:"Ged",
-      posicion:"Desarrollo",
-      email:"gedgonz7@gamail.com"
-    },
-    {
-      nombre:"Gonz",
-      posicion:"Diseñador",
-      email:"gedgonz7@gamail.com"
-    },
-    {
-      nombre:"GedGonz",
-      posicion:"BI",
-      email:"gedgonz7@gamail.com"
-    }];
-    
-    model:any={};
-
-    nuevoEmpleado(): void{
-      this.empleados.push(this.model);
-      this.model={};
+    nuevoEmpleado(): void {
+      if (this.model.id === 0) {
+        this.empleados.push(this.model);
+      }
+      this.model = new empleado();
       console.log(this.empleados);
     }
-    editarEmpleado(i:number):void{
-      this.model.nombre=this.empleados[i].nombre;
-      this.model.posicion=this.empleados[i].posicion;
-      this.model.email=this.empleados[i].email;
-      console.log(this.empleados[i]);
+    // tslint:disable-next-line:variable-name
+    editarEmpleado(_empleado: empleado): void {
+      /*this.model.nombre = this.empleados[i].nombre;
+      this.model.posicion = this.empleados[i].posicion;
+      this.model.email = this.empleados[i].email;*/
+      this.model = _empleado;
+      this.isupdate = true;
+      console.log(_empleado);
+
     }
-    actualizarEmpleado():void{
-      
-    }
-    eliminarEmpleado(i:number):void{
-      let eliminado = this.empleados.splice(i,1);
+    /*
+    actualizarEmpleado(): void {
+      this.empleados[this.elementoarray].nombre = this.model.nombre;
+      this.empleados[this.elementoarray].posicion = this.model.posicion;
+      this.empleados[this.elementoarray].email = this.model.email;
+      this.empleados.findIndex(x => x === this.model).
+      this.isupdate = false;
+      this.model = new empleado  ();
+      console.log(this.model);
+    }*/
+    eliminarEmpleado(i): void {
+      const eliminado = this.empleados.splice(i, 1);
       console.log(eliminado);
     }
 }
